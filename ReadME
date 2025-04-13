@@ -1,0 +1,28 @@
+# 🌿 Zarządzanie Magicznym Ogrodem
+
+Projekt webowy do zarządzania magicznym ogrodem, w którym można dodawać, przeglądać i organizować zaczarowane rośliny oraz stworzenia. Aplikacja posiada frontend napisany w HTML/CSS/JS oraz backend w Pythonie (Flask).
+
+---
+
+## 📦 Technologie
+
+### Frontend:
+- HTML5
+- CSS3 (kolorystyka: fiolet, granat, czerń)
+- JavaScript (Vanilla)
+
+### Backend:
+- Python 3
+- Flask
+
+---
+
+## 🚀 Uruchamianie projektu
+
+### Backend:
+1. Przejdź do folderu `backend/`.
+2. Zainstaluj Flask:
+   ```bash
+   pip install flask
+3. Uruchom aplikacje:
+   python app.py

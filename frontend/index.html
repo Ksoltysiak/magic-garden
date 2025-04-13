@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magiczny Ogród</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1>🌿 Magiczny Ogród 🌿</h1>
+<form id="plant-form">
+    <label for="name"></label><input type="text" id="name" placeholder="Nazwa rośliny" required />
+    <label for="image"></label><input type="text" id="image" placeholder="Link do zdjęcia" required />
+    <label for="description"></label><textarea id="description" placeholder="Opis rośliny" required></textarea>
+    <button type="submit">Dodaj roślinę</button>
+</form>
+
+<div id="plant-list"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
