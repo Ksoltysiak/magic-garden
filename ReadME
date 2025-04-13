@@ -1,20 +1,68 @@
 # Zarządzanie Magicznym Ogrodem
+
 Projekt webowy do zarządzania magicznym ogrodem, w którym można dodawać, przeglądać i organizować zaczarowane rośliny oraz stworzenia. Aplikacja posiada frontend napisany w HTML/CSS/JS oraz backend w Pythonie (Flask).
----
-# Technologie
+
+## Funkcjonalności
+
+- Dodawanie nowych roślin (nazwa, opis, link do zdjęcia)
+- Wyświetlanie wszystkich dodanych roślin
+- Przyjazny, responsywny interfejs użytkownika
+
+## Technologie
+
 ### Frontend:
 - HTML5
 - CSS3 (kolorystyka: fiolet, granat, czerń)
 - JavaScript (Vanilla)
+
 ### Backend:
 - Python 3
 - Flask
----
-##  Uruchamianie projektu
+- Flask-CORS
+
+## Struktura projektu
+
+```
+magic-garden/
+├── .idea/              # Katalog konfiguracji IDE
+├── backend/            # Kod backendu
+│   ├── app.py          # Główna aplikacja Flask
+│   └── database.py     # Moduł do obsługi bazy danych
+├── frontend/           # Kod frontendu
+│   ├── index.html      # Strona główna
+│   ├── script.js       # Logika JavaScript
+│   └── style.css       # Style CSS
+├── node/               # Katalog node.js
+├── README.md           # Ten plik
+└── requirements        # Wymagane pakiety Pythona
+```
+
+## Uruchamianie projektu
+
 ### Backend:
-1. Przejdź do folderu `backend/`.
-2. Zainstaluj Flask:
+1. Przejdź do folderu `backend/`
+2. Zainstaluj Flask i Flask-CORS:
    ```bash
-   pip install flask
-3. Uruchom aplikacje:
+   pip install flask flask-cors
+   ```
+3. Uruchom aplikację:
+   ```bash
    python app.py
+   ```
+   Backend będzie dostępny pod adresem: http://localhost:5000
+
+### Frontend:
+1. Otwórz plik `frontend/index.html` w przeglądarce internetowej
+
+## API Endpoints
+
+### Rośliny
+- `GET /plants` - pobierz wszystkie rośliny
+- `POST /plants` - dodaj nową roślinę z parametrami:
+  - `name`: nazwa rośliny (wymagane)
+  - `image`: link do zdjęcia (wymagane)
+  - `description`: opis rośliny (wymagane)
+
+## Autorzy
+
+- Jakub Sołtysiak, Dominik Łakomy
