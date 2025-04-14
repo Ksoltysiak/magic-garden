@@ -80,7 +80,58 @@ form button:hover {
     margin-top: 10px;
 }
 
+/* Weather Card */
+.weather-card {
+    background-color: #1a1a2e;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #5a4b8b;
+    margin-bottom: 30px;
+}
+
+.weather-stat {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.weather-icon {
+    font-size: 2em;
+}
+
+/* Error Page */
+.error-page {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.error-page .button {
+    background: #5a4b8b;
+    padding: 10px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+    margin-top: 20px;
+}
+
 /* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .weather-card {
+        padding: 15px;
+    }
+    
+    .weather-stat {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
 @media (max-width: 600px) {
     form, #plant-list > div {
         padding: 15px;
@@ -93,5 +144,20 @@ form button:hover {
 
     h1 {
         font-size: 24px;
+    }
+    
+    .error-page {
+        padding: 30px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .weather-icon {
+        font-size: 1.5em;
+    }
+    
+    .error-page .button {
+        width: 100%;
+        padding: 12px;
     }
 }

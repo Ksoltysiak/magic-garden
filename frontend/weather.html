@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magiczny Ogród - Pogoda</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌿 Magiczny Ogród - Pogoda 🌿</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Rośliny</a></li>
+                    <li><a href="weather.html" class="active">Pogoda</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <div id="current-weather" class="weather-card">
+            <h2>Aktualna pogoda</h2>
+            <div id="weather-display">
+                <p>Ładowanie aktualnej pogody...</p>
+            </div>
+        </div>
+        
+        <form id="weather-form">
+            <h2>Zaktualizuj pogodę</h2>
+            <div class="form-group">
+                <label for="sky-condition">Stan nieba</label>
+                <select id="sky-condition" required>
+                    <option value="clear">Bezchmurne niebo</option>
+                    <option value="partly_cloudy">Częściowe zachmurzenie</option>
+                    <option value="cloudy">Pochmurno</option>
+                    <option value="overcast">Całkowite zachmurzenie</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="temperature">Temperatura (°C)</label>
+                    <input type="number" id="temperature" min="-20" max="50" value="22" required />
+                </div>
+                <div class="form-group">
+                    <label for="humidity">Wilgotność (%)</label>
+                    <input type="number" id="humidity" min="0" max="100" value="60" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="precipitation" />
+                    <span>Opad atmosferyczny</span>
+                </label>
+                <p class="validation-message" id="precip-validation"></p>
+            </div>
+            <button type="submit">Zaktualizuj pogodę</button>
+        </form>
+        
+        <div id="weather-effects" class="weather-effects">
+            <h2>Wpływ pogody na ogród</h2>
+            <div id="effects-display"></div>
+        </div>
+    </div>
+    <script src="weather.js"></script>
+</body>
+</html>
