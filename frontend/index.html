@@ -7,28 +7,90 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<h1>🌿 Magiczny Ogród 🌿</h1>
+<header>
+    <h1>🌿 Magiczny Ogród 🌿</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Rośliny</a></li>
+            <li><a href="weather.html">Pogoda</a></li>
+        </ul>
+    </nav>
+</header>
 
-<section id="login-section">
+<!-- Login Section -->
+<section id="login-section" class="login-section">
     <h2>🔐 Logowanie</h2>
-    <input type="text" id="username" placeholder="Login" required>
-    <input type="password" id="password" placeholder="Hasło" required>
-    <button onclick="login()">Zaloguj</button>
-    <button onclick="logout()">Wyloguj</button>
+    <form id="login-form">
+        <label for="username"></label><input type="text" id="username" placeholder="Login" required />
+        <label for="password"></label><input type="password" id="password" placeholder="Hasło" required />
+        <button type="button" onclick="login()">Zaloguj</button>
+        <button type="button" onclick="logout()">Wyloguj</button>
+    </form>
 </section>
 
 <hr>
 
+<!-- Plant Form -->
 <form id="plant-form">
-    <label for="name"></label><input type="text" id="name" placeholder="Nazwa rośliny" required />
-    <label for="image"></label><input type="text" id="image" placeholder="Link do zdjęcia" required />
-    <label for="description"></label><textarea id="description" placeholder="Opis rośliny" required></textarea>
+    <label for="name">Nazwa rośliny</label>
+    <input type="text" id="name" placeholder="Nazwa rośliny" required />
+    <label for="image">Link do zdjęcia</label>
+    <input type="text" id="image" placeholder="Link do zdjęcia" required />
+    <label for="description">Opis rośliny</label>
+    <textarea id="description" placeholder="Opis rośliny" required></textarea>
     <button type="submit">Dodaj roślinę</button>
 </form>
 
 <h2>🌱 Rośliny</h2>
 <div id="plant-list"></div>
 
+<hr>
+
+<!-- Weather Section -->
+<div id="current-weather" class="weather-card">
+    <h2>Aktualna pogoda</h2>
+    <div id="weather-display">
+        <p>Ładowanie aktualnej pogody...</p>
+    </div>
+</div>
+
+<form id="weather-form">
+    <h2>Zaktualizuj pogodę</h2>
+    <div class="form-group">
+        <label for="sky-condition">Stan nieba</label>
+        <select id="sky-condition" required>
+            <option value="clear">Bezchmurne niebo</option>
+            <option value="partly_cloudy">Częściowe zachmurzenie</option>
+            <option value="cloudy">Pochmurno</option>
+            <option value="overcast">Całkowite zachmurzenie</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label for="temperature">Temperatura (°C)</label>
+            <input type="number" id="temperature" min="-20" max="50" value="22" required />
+        </div>
+        <div class="form-group">
+            <label for="humidity">Wilgotność (%)</label>
+            <input type="number" id="humidity" min="0" max="100" value="60" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="checkbox-label">
+            <input type="checkbox" id="precipitation" />
+            <span>Opad atmosferyczny</span>
+        </label>
+        <p class="validation-message" id="precip-validation"></p>
+    </div>
+    <button type="submit">Zaktualizuj pogodę</button>
+</form>
+
+<div id="weather-effects" class="weather-effects">
+    <h2>Wpływ pogody na ogród</h2>
+    <div id="effects-display"></div>
+</div>
+
 <script src="script.js"></script>
+<script src="weather.js"></script>
 </body>
 </html>

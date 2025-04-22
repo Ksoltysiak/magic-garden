@@ -7,7 +7,7 @@ document.getElementById('plant-form').addEventListener('submit', async (e) => {
     const name = document.getElementById('name').value;
     const image = document.getElementById('image').value;
     const description = document.getElementById('description').value;
-    
+
     try {
         let response;
         if (currentEditId) {
@@ -30,10 +30,10 @@ document.getElementById('plant-form').addEventListener('submit', async (e) => {
 
         const data = await response.json();
         if (!response.ok) throw new Error(data.error || 'Nieznany błąd');
-        
+
         alert(data.message);
         resetForm();
-        loadPlants();
+        await loadPlants();
     } catch (error) {
         alert(error.message);
     }
@@ -46,10 +46,10 @@ async function loadPlants() {
             method: 'GET',
             credentials: 'include'
         });
-        
+
         const plantList = document.getElementById('plant-list');
         plantList.innerHTML = '';
-        
+
         if (!response.ok) {
             const error = await response.json();
             throw new Error(error.error);
@@ -79,18 +79,18 @@ async function loadPlants() {
 // Usuwanie rośliny z potwierdzeniem
 async function deletePlant(id) {
     if (!confirm('Czy na pewno chcesz usunąć tę roślinę?')) return;
-    
+
     try {
         const response = await fetch(`${baseURL}/plants/${id}`, {
             method: 'DELETE',
             credentials: 'include'
         });
-        
+
         if (!response.ok) {
             const error = await response.json();
             throw new Error(error.error);
         }
-        
+
         alert('Roślina została usunięta');
         loadPlants();
     } catch (error) {
@@ -117,7 +117,7 @@ function resetForm() {
 async function login() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    
+
     try {
         const response = await fetch(`${baseURL}/login`, {
             method: 'POST',
@@ -125,10 +125,10 @@ async function login() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
         });
-        
+
         const data = await response.json();
         if (!response.ok) throw new Error(data.error);
-        
+
         alert(data.message);
         loadPlants();
     } catch (error) {
@@ -143,12 +143,12 @@ async function logout() {
             method: 'POST',
             credentials: 'include'
         });
-        
+
         if (!response.ok) {
             const error = await response.json();
             throw new Error(error.error);
         }
-        
+
         alert('Wylogowano pomyślnie');
         loadPlants();
     } catch (error) {

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    loadCurrentWeather();
+    await loadCurrentWeather();
 
     const skyCondition = document.getElementById('sky-condition');
     const precipitation = document.getElementById('precipitation');

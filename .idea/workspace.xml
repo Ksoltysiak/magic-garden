@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d5dc25c-ddad-469a-a546-eabc87786834" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/MagicYard.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReadME" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/database.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReadME" beforeDir="false" afterPath="$PROJECT_DIR$/ReadME" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/weather.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/weather.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +33,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -48,7 +51,10 @@
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript Debug.index.html.executor": "Run",
+    "JavaScript Debug.weather.html.executor": "Run",
     "Python.app.executor": "Run",
+    "Python.database.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -60,6 +66,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_interpreter_path": "C:/Users/adsol/WebstormProjects/MagicYard/node/node",
     "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
@@ -81,6 +88,7 @@
       <updated>1744558650131</updated>
       <workItem from="1744558651216" duration="235000" />
       <workItem from="1744558897381" duration="2872000" />
+      <workItem from="1745324255612" duration="2677000" />
     </task>
     <servers />
   </component>

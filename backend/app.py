@@ -60,6 +60,8 @@ def logout():
 @login_required
 def get_plants():
     plants = Plant.query.all()
+    if not plants:
+        return jsonify({"error": "Brak roślin w bazie danych"}), 404
     return jsonify([
         {
             "id": plant.id,
@@ -120,7 +122,6 @@ def get_weather():
     if weather:
         return jsonify(weather.to_dict())
     else:
-        # Domyślne wartości, jeśli brak danych
         return jsonify({
             "sky_condition": "clear",
             "temperature": 20,
@@ -131,9 +132,16 @@ def get_weather():
 @app.route('/weather', methods=['POST'])
 def set_weather():
     data = request.json
+
     # Walidacja: opad nie może wystąpić przy bezchmurnym niebie
     if data.get('precipitation') and data.get('sky_condition') == 'clear':
         return jsonify({"error": "Opad atmosferyczny nie może wystąpić przy bezchmurnym niebie!"}), 400
+
+    # Validation for other weather parameters
+    if not isinstance(data.get('temperature'), int):
+        return jsonify({"error": "Temperatura musi być liczbą całkowitą!"}), 400
+    if not isinstance(data.get('humidity'), int) or not (0 <= data.get('humidity') <= 100):
+        return jsonify({"error": "Wilgotność musi być liczbą całkowitą w zakresie 0-100!"}), 400
 
     new_weather = Weather(
         sky_condition=data.get('sky_condition', 'clear'),
@@ -144,6 +152,11 @@ def set_weather():
     db.session.add(new_weather)
     db.session.commit()
     return jsonify({"message": "Pogoda została zaktualizowana!"}), 201
+
+# 404 error handler
+@app.errorhandler(404)
+def not_found_error(error):
+    return jsonify({"error": "Strona nie znaleziona!"}), 404
 
 if __name__ == '__main__':
     with app.app_context():
