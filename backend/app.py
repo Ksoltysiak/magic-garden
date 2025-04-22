@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, session
 from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
+from database import db, Plant, Weather
 from functools import wraps
 
 app = Flask(__name__)
@@ -23,25 +23,13 @@ CORS(
     allow_headers=["Content-Type"]
 )
 
-# Inicjalizacja SQLAlchemy
-db = SQLAlchemy(app)
-
+db.init_app(app)  # Inicjalizacja bazy danych
 
 # Użytkownicy testowi
 users = {
     "admin": "password123",
     "user": "testpass"
 }
-
-# Model rośliny
-class Plant(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    image = db.Column(db.String(200), nullable=False)
-    description = db.Column(db.String(500), nullable=False)
-
-    def __repr__(self):
-        return f"<Plant {self.name}>"
 
 # Dekorator sprawdzający, czy użytkownik jest zalogowany
 def login_required(f):
@@ -74,7 +62,7 @@ def get_plants():
     plants = Plant.query.all()
     return jsonify([
         {
-            "id": plant.id,  # Dodaj ID!
+            "id": plant.id,
             "name": plant.name,
             "image": plant.image,
             "description": plant.description
@@ -125,7 +113,39 @@ def delete_plant(plant_id):
     db.session.commit()
     return jsonify({"message": "Usunięto roślinę!"}), 200
 
+# Endpointy pogody
+@app.route('/weather', methods=['GET'])
+def get_weather():
+    weather = Weather.query.order_by(Weather.id.desc()).first()
+    if weather:
+        return jsonify(weather.to_dict())
+    else:
+        # Domyślne wartości, jeśli brak danych
+        return jsonify({
+            "sky_condition": "clear",
+            "temperature": 20,
+            "humidity": 50,
+            "precipitation": False
+        })
+
+@app.route('/weather', methods=['POST'])
+def set_weather():
+    data = request.json
+    # Walidacja: opad nie może wystąpić przy bezchmurnym niebie
+    if data.get('precipitation') and data.get('sky_condition') == 'clear':
+        return jsonify({"error": "Opad atmosferyczny nie może wystąpić przy bezchmurnym niebie!"}), 400
+
+    new_weather = Weather(
+        sky_condition=data.get('sky_condition', 'clear'),
+        temperature=data.get('temperature', 20),
+        humidity=data.get('humidity', 50),
+        precipitation=data.get('precipitation', False)
+    )
+    db.session.add(new_weather)
+    db.session.commit()
+    return jsonify({"message": "Pogoda została zaktualizowana!"}), 201
+
 if __name__ == '__main__':
-    with app.app_context():  # Używamy kontekstu aplikacji
-        db.create_all()  # Tworzy wszystkie tabele, jeśli nie istnieją
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)
