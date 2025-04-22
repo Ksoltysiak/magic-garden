@@ -1,0 +1,32 @@
+# Pliki i foldery Pythona
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Baza danych i pliki środowiskowe
+instance/
+*.db
+.env
+
+# Środowisko wirtualne
+venv/
+env/
+ENV/
+
+# Pliki logów i cache
+*.log
+.cache/
+.pytest_cache/
+
+# Node.js (jeśli używasz node_modules do frontendu)
+node_modules/
+
+# Pliki IDE
+.idea/
+.vscode/
+*.sublime-*
+
+# Systemowe
+.DS_Store
+Thumbs.db

@@ -1,49 +1,58 @@
 # Zarządzanie Magicznym Ogrodem
 
-Projekt webowy do zarządzania magicznym ogrodem, w którym można dodawać, przeglądać i organizować zaczarowane rośliny oraz stworzenia. Aplikacja posiada frontend napisany w HTML/CSS/JS oraz backend w Pythonie (Flask).
+Projekt webowy do zarządzania magicznym ogrodem, w którym można dodawać, przeglądać, edytować i usuwać zaczarowane rośliny. Aplikacja posiada frontend napisany w HTML/CSS/JS oraz backend w Pythonie (Flask + SQLAlchemy).
 
 ## Funkcjonalności
 
 - Dodawanie nowych roślin (nazwa, opis, link do zdjęcia)
 - Wyświetlanie wszystkich dodanych roślin
-- Przyjazny, responsywny interfejs użytkownika
+- Edycja i usuwanie roślin (pełny CRUD)
+- Walidacja danych wejściowych (frontend i backend)
+- Przyjazny, responsywny interfejs użytkownika (RWD)
+- Zarządzanie pogodą w ogrodzie (weather.html + weather.js)
+- Kolorystyka: fiolet, granat, czerń
 
 ## Technologie
 
 ### Frontend:
 - HTML5
-- CSS3 (kolorystyka: fiolet, granat, czerń)
+- CSS3 
 - JavaScript (Vanilla)
 
 ### Backend:
 - Python 3
 - Flask
 - Flask-CORS
+- Flask-SQLAlchemy
 
 ## Struktura projektu
 
 ```
 magic-garden/
-├── .idea/              # Katalog konfiguracji IDE
-├── backend/            # Kod backendu
-│   ├── app.py          # Główna aplikacja Flask
-│   └── database.py     # Moduł do obsługi bazy danych
-├── frontend/           # Kod frontendu
-│   ├── index.html      # Strona główna
-│   ├── script.js       # Logika JavaScript
-│   └── style.css       # Style CSS
-├── node/               # Katalog node.js
-├── README.md           # Ten plik
-└── requirements        # Wymagane pakiety Pythona
+├── .gitignore           # Plik ignorowania dla Gita
+├── .idea/               # Katalog konfiguracji IDE
+├── backend/             # Kod backendu
+│   ├── app.py           # Główna aplikacja Flask
+│   └── database.py      # Moduł do obsługi bazy danych
+├── frontend/            # Kod frontendu
+│   ├── index.html       # Strona główna
+│   ├── script.js        # Logika JavaScript (CRUD roślin)
+│   ├── style.css        # Style CSS
+│   ├── 404.html         # Strona błędu 404
+│   ├── weather.html     # Strona pogody
+│   └── weather.js       # Logika JavaScript do pogody
+├── node/                # Katalog node.js
+├── README.md            # Ten plik
+└── requirements.txt     # Wymagane pakiety Pythona
 ```
 
 ## Uruchamianie projektu
 
 ### Backend:
 1. Przejdź do folderu `backend/`
-2. Zainstaluj Flask i Flask-CORS:
+2. Zainstaluj wymagane pakiety:
    ```bash
-   pip install flask flask-cors
+   pip install -r requirements.txt
    ```
 3. Uruchom aplikację:
    ```bash
@@ -52,7 +61,8 @@ magic-garden/
    Backend będzie dostępny pod adresem: http://localhost:5000
 
 ### Frontend:
-1. Otwórz plik `frontend/index.html` w przeglądarce internetowej
+1. Uruchom serwer lokalny (np. Live Server w VSCode lub python -m http.server w folderze frontend)
+2. Otwórz plik frontend/index.html lub frontend/weather.html w przeglądarce internetowej
 
 ## API Endpoints
 
@@ -62,6 +72,8 @@ magic-garden/
   - `name`: nazwa rośliny (wymagane)
   - `image`: link do zdjęcia (wymagane)
   - `description`: opis rośliny (wymagane)
+- `PUT /plants/<id>` - edytuj istniejącą roślinę
+- `DELETE /plants/<id>` - usuń roślinę
 
 ## Autorzy
 
